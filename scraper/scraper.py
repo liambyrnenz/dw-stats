@@ -6,8 +6,17 @@ from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
 
-
 # Scraper created with help from https://realpython.com/python-web-scraping-practical-introduction/
+
+URL = "http://www.chakoteya.net/DoctorWho/"
+
+
+def count_occurrences(string):
+    content = retrieve(URL)
+    soup = BeautifulSoup(content, "html.parser")
+    text = soup.get_text()
+
+    return text.count(string)
 
 
 def retrieve(url):
